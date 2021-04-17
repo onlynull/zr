@@ -1,0 +1,29 @@
+#可以支持CQHTTP和mirai_api_http两种，自己选择
+#当两个模式都为true时会启用mirai_api_http，当两个模式都为false时会启用cqhttp
+mirai_api_http: true
+cqhttp: false
+
+#cqhttp的配置
+cqhttp_config:
+  access_token: 123
+  host: 127.0.0.1
+  http_port: 5700
+  ws_port: 6700
+
+#mirai_api_http的配置
+mirai_api_http_config:
+  QQ: 1234
+  authKey: 1234
+  host: 127.0.0.1
+  port: 8888
+
+#需要启动的功能(模块)
+modeules:
+- cookbook
+- BILI
+- Acfun
+- music
+- Imgbot
+- LiveBILI
+- weibo
+#- demo

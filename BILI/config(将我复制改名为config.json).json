@@ -1,0 +1,39 @@
+{
+"delay":10,
+"forward_draw": true,
+"config": [
+  {
+    "uid": 15272008,
+    "roomid": 2458117,
+    "uname": "onlynull",
+    "showname": "汪酱",
+    "Startvideo": true,
+    "StartLive": true,
+    "StartDynamic": true,
+    "Group": [
+      {
+        "id": 928275029,
+        "ATall": true,
+        "sendPic": true,
+        "sendUrl": true
+      }
+    ]
+  },
+  {
+    "uid": 21,
+    "roomid": 22,
+    "uname": "23",
+    "showname": "24",
+    "Startvideo": true,
+    "StartLive": true,
+    "StartDynamic": true,
+    "Group": [
+      {
+        "id": 25,
+        "ATall": true,
+        "sendPic": true,
+        "sendUrl": true
+      }
+    ]
+  }
+]}

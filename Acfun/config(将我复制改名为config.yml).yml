@@ -1,0 +1,13 @@
+#延迟
+#推送开播、投稿、动态信息
+delay: 5
+user:
+- uid: '7557005'
+  ATall: true
+  group:
+    - 928275029
+
+- uid: '34195269'
+  ATall: true
+  group:
+    - 611145073

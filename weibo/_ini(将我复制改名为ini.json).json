@@ -1,0 +1,11 @@
+{ 
+  "weibo": [
+    {
+      "name": "onlynull",
+      "weiboID": "1076035279542941",
+      "weiboURL": "https://m.weibo.cn/api/container/getIndex?containerid=1076035279542941",
+      "group": [928275029],
+      "at": true
+    }
+  ]
+}

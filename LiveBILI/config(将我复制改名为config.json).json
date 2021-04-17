@@ -1,0 +1,38 @@
+{
+  "config": [
+    {
+      "uid": "506829997",
+      "roomid": 21903320,
+      "name": "",
+      "showname": "陈怡欣",
+      "savegift":true,
+      "savedanmu":true,
+      "Group": [
+        {
+          "id": 691963133,
+          "ATall": false,
+          "sendPic": true,
+          "sendUrl": true,
+          "roominfo": true
+        }
+      ]
+    },
+    {
+      "uid": "15272008",
+      "roomid": 2458117,
+      "name": "",
+      "showname": "/bin/cat",
+      "savegift":true,
+      "savedanmu":true,
+      "Group": [
+        {
+          "id": 691963133,
+          "ATall": false,
+          "sendPic": true,
+          "sendUrl": true,
+          "roominfo": true
+        }
+      ]
+    }
+  ]
+}
