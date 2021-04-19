@@ -88,7 +88,7 @@ if __name__ == '__main__':
             return json.dumps({'code':500,'msg':'缺少必要参数group','data':{}},ensure_ascii=False)
 
     #测试，阻塞运行webhttp
-    zr.run(port=80)
+    #zr.run(port=80)
 
     # 机器人初始化完成后将调用所有模块的Main函数,传入发送群消息和私聊消息的回调
     for task in tasks:
