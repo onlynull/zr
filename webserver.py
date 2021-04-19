@@ -29,7 +29,7 @@ def readconfig():
         print('读入配置文件或解析时发生异常，检查配置文件是否正确。默认路径为当前目录下的config.yaml。如果没有则需要复制文件 _config(将我复制改名为config.yaml).yaml 为 config.yaml')
         return {}
 
-#登录
+#登录页面
 @zr.route('/login',methods=['GET','POST'],endpoint='l1') # endpoint用于url_for
 def login():
     if request.method == "GET": # 当get方法访问登录页面,返回登录页面
@@ -112,6 +112,32 @@ def other(a):
     print(a)
     return json.dumps({'code':404,'msg':f'Not Found <{a}>','data':{}},ensure_ascii=False)
 
+#api登录
+@zr.route('/api/login',methods=['GET','POST']) # endpoint用于url_for
+def apilogin():
+    if request.method == "GET":
+        token = request.values.get('token')
+        if token == 'www123':  # 判断用户,用户信息可以放在数据库内
+            session['token'] = token  # 在session中添加登录的用户,在访问其他页面时可以使用
+            return json.dumps({'code':200,'msg':f'登录成功','data':{}},ensure_ascii=False)
+        return json.dumps({'code':500,'msg':f'token错误','data':{}},ensure_ascii=False)
+        #return render_template('login.html')
+    else: # 当post方法访问时,则进行判断登录验证
+        token = request.form.get('token')  # 获得form中name="user"对应的值
+        if token == 'www123':  # 判断用户,用户信息可以放在数据库内
+            session['token'] = token  # 在session中添加登录的用户,在访问其他页面时可以使用
+            return json.dumps({'code':200,'msg':f'登录成功','data':{}},ensure_ascii=False)
+        return json.dumps({'code':500,'msg':f'token错误','data':{}},ensure_ascii=False)
+
+#检查登录
+@zr.route('/api/islogin')
+def islogin():
+    token = session.get('token')
+    if not token:
+        return json.dumps({'code':401,'msg':'未登录','data':{}},ensure_ascii=False)
+    else: return json.dumps({'code':200,'msg':'已登录','data':{}},ensure_ascii=False)
+
+
 #列出所有模块
 @zr.route('/api/modules',methods=['GET'])
 def modules():
@@ -120,9 +146,9 @@ def modules():
     config = readconfig()
     for mm in m:
         if mm in config.get('modeules',[]):
-            ms.append({'name':mm,'status':True})
+            ms.append({'name':mm,'status':True,'des':''})
         else:
-            ms.append({'name':mm,'status':False})
+            ms.append({'name':mm,'status':False,'des':''})
     #m = ['482021','48tools','douyin','cookbook','szbus','48','BILI','Acfun','music','Imgbot','LiveBILI','weibo','一言','demo']
     return json.dumps({'code':200,'msg':'读取配置文件失败，仅列出所有模块，是否使用未知' if config == {} else '','data':ms},ensure_ascii=False)
 
@@ -178,6 +204,15 @@ def setbotconfig():
         print('setbotconfig-写入配置文件失败')
         return json.dumps({'code':500,'msg':'写入失败','data':{}},ensure_ascii=False)
 
+@zr.route('/api/development')
+@apichecklogin
+def  Development():
+    return send_file('./api.txt',mimetype='text/plain',as_attachment=True,attachment_filename='api说明.txt')
+
+@zr.route('/api/<m>/development',endpoint='BILIdevelopment')
+@apichecklogin
+def  Development(m):
+    return send_file(f'./{m}/__init__.py',mimetype='text/plain',as_attachment=True,attachment_filename=f'{m}api说明.txt')
 
 if __name__ == '__main__':
     #print(lookup())
