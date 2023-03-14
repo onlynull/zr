@@ -37,7 +37,7 @@ def on_GroupMessage(Message: MsgChain, sender: GroupInfo):
         #发送列表
         a = getdirs(path+'\\'+str(sender.GroupId))
         if a and len(a) >= 1:
-            Send['sendGroupMsg'](sender.GroupId,MsgChain().joinPlain('\n'.join(a)))
+            Send['sendGroupMsg'](sender.GroupId,MsgChain().joinPlain(', '.join(a)))
     elif s.startswith('/'):
         #符合初步判断
         if s.find('[CQ:image') != -1:
